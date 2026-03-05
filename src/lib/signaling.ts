@@ -196,19 +196,21 @@ class SignalingService {
         // Check if we're in production (Vercel deployment)
         const hostname = window.location.hostname;
         const protocol = window.location.protocol;
+
+        this.serverUrl = 'https://transmitflow.onrender.com'
         
         // Production configuration
-        if (hostname.includes('vercel.app') || 
-            hostname.includes('serverforminecraftbedrock.fun') || 
-            hostname.includes('your-custom-domain.com')) {
-          // Use your deployed signaling server URL
-          this.serverUrl = process.env.NEXT_PUBLIC_SIGNALING_SERVER_URL || 'https://signaling-server-6ziv.onrender.com';
-        } else if (hostname === 'localhost' || hostname === '127.0.0.1') {
-          this.serverUrl = 'http://localhost:3001';
-        } else {
-          // Use the same IP/hostname but port 3003 for local network
-          this.serverUrl = `${protocol}//${hostname}:3001`;
-        }
+        // if (hostname.includes('vercel.app') || 
+        //     hostname.includes('serverforminecraftbedrock.fun') || 
+        //     hostname.includes('your-custom-domain.com')) {
+        //   // Use your deployed signaling server URL
+        //   this.serverUrl = process.env.NEXT_PUBLIC_SIGNALING_SERVER_URL || 'https://signaling-server-6ziv.onrender.com';
+        // } else if (hostname === 'localhost' || hostname === '127.0.0.1') {
+        //   this.serverUrl = 'http://localhost:3001';
+        // } else {
+        //   // Use the same IP/hostname but port 3003 for local network
+        //   this.serverUrl = `${protocol}//${hostname}:3001`;
+        // }
       }
       
       const connectTimeoutMs = 120000;
